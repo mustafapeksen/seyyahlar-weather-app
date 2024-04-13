@@ -1,5 +1,5 @@
 import React from "react";
-import SearchIcon from '@mui/icons-material/Search';
+import SearchIcon from "@mui/icons-material/Search";
 
 function Header(props) {
   return (
@@ -8,9 +8,7 @@ function Header(props) {
       <h1 id="title">Seyyahlar Weather App</h1>
       <form id="search" onSubmit={props.cityName}>
         <input type="text" name="city" id="city" />
-         {/* Görünmez buton */}
-         <button id="submit" type="submit" style={{ display: "none" }}></button>
-        {/* Arama simgesi */}
+        <button id="submit" type="submit" style={{ display: "none" }}></button>
         <label htmlFor="submit" style={{ cursor: "pointer" }}>
           <SearchIcon fontSize="large" />
         </label>
