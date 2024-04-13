@@ -75,23 +75,38 @@ function CurrentWeather(props) {
       weather.weather[0].description.slice(1);
 
     const feelsLike = Math.floor(weather.main.feels_like - 273.15);
+    const temp = Math.floor(weather.main.temp - 273.15);
     const humidity = weather.main.humidity;
 
     const windDegree = weather.wind.deg;
     const windSpeed = Math.floor(weather.wind.speed * 3.6);
     const windDirection = degToCompass(windDegree);
+
     const dateDataTaken = weather.dt;
     const date = new Date(dateDataTaken * 1000).toUTCString();
+
     return (
-      <div className="box">
-        <h2 id="cityName">{weather.name}</h2>
-        {iconUrl && <img src={iconUrl} alt="icon" />}
-        <p>{description + " Hissedilen " + feelsLike + " °C"}</p>
-        <p>Nem:{humidity}</p>
-        <p>
-          Rüzgar {windDirection} ({windDegree}°)  yönünde {windSpeed} km/h hızla esiyor.
-        </p>
-        <p>Tarih: {date}</p>
+      <div
+        className="box"
+        style={{
+          backgroundImage: `url(${iconUrl})`,
+          backgroundPosition:"center",
+          backgroundSize:"100% 100%",
+        }}
+      >
+        <div className="content">
+          <h2 id="cityName">{weather.name}</h2>
+          {iconUrl && <img id="weather-img" src={iconUrl} alt="icon" />}
+          <h3 id="temp">{temp}°C</h3>
+          <p id="desc">{description}</p>
+          <p id="feels-like"> Hissedilen {feelsLike} °C</p>
+          <p id="humidity">Nem: {humidity}%</p>
+          <p id="wind">
+            Rüzgar {windDirection} ({windDegree}°) yönünde {windSpeed} km/h
+            hızla esiyor.
+          </p>
+          <p id="date">Tarih: {date}</p>
+        </div>
       </div>
     );
   }
