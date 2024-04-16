@@ -5,7 +5,7 @@ import axios from "axios"; // Importing axios for making HTTP requests
 import CurrentWeather from "./CurrentWeather"; // Importing the CurrentWeather component
 import ForecastWeather from "./ForecastWeather"; // Importing the ForecastWeather component
 
-const apiKey = "26ce2cf4d5242da8d86c6d1dda8008d9"; // API key for accessing OpenWeatherMap API
+const apiKey = "/"; // API key for accessing OpenWeatherMap API
 
 function App() {
   const [cityName, setCityName] = useState("Anamur"); // State to store the name of the city
