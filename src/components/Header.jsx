@@ -13,7 +13,7 @@ function Header(props) {
       <img id="logo" src="/image/SeyyahlarLogo.jpg" alt="logo" />
       <h1 id="title">Seyyahlar Weather App</h1>
       <form id="search" onSubmit={props.cityName}>
-        <input type="text" name="city" id="city" />
+        <input type="text" name="city" id="city" placeholder="Şehir" />
         <button id="submit" type="submit" style={{ display: "none" }}></button>
         <label htmlFor="submit" style={{ cursor: "pointer" }}>
           <SearchIcon fontSize="large" />

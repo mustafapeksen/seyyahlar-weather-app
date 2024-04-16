@@ -15,6 +15,28 @@ body {
     margin-right: 0;
 }
 
+@media screen and (max-width: 600px) {
+    div.heading {
+        display: grid;
+        place-items: center;
+
+    }
+
+    div.box {
+        max-width: 23em;
+    }
+
+    div.content {
+        max-width: 22em;
+        min-width: 16em;
+    }
+
+    div.wrapper {
+        animation: scroll 60s linear infinite;
+    }
+}
+
+
 #title {
     color: #E1E2EF;
     font-size: 3em;
@@ -30,6 +52,14 @@ body {
     justify-content: center;
     align-items: center;
     background-color: rgb(133, 182, 228);
+}
+
+::placeholder {
+    font-family: "Karla", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1.3em;
 }
 
 h2 {
@@ -120,6 +150,11 @@ h2 {
     border-radius: 5px 5px;
     border: none;
     background-color: #E1E2EF;
+    text-align: center;
+    text-transform: capitalize;
+    font-family: "Karla", sans-serif;
+    font-weight: 400;
+    font-size: 1.3em;
 }
 
 .band {
