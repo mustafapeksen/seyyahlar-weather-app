@@ -1,10 +1,22 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
+/**
+ * CurrentWeather component displays the current weather information.
+ * @param {Object} props - Component props.
+ * @param {Object} props.data - Weather data for the current location.
+ * @param {string} props.api - API key for fetching weather data.
+ * @returns {JSX.Element} CurrentWeather component.
+ */
 function CurrentWeather(props) {
   const [weather, setWeather] = useState(null);
   const [iconUrl, setIconUrl] = useState("");
 
+  /**
+   * Converts wind degree to compass direction.
+   * @param {number} num - Wind degree.
+   * @returns {string} Compass direction.
+   */
   function degToCompass(num) {
     // Ensure the degree value is within the range [0, 360)
     num = (num + 360) % 360;
@@ -62,25 +74,23 @@ function CurrentWeather(props) {
     }
   }, [weather]);
 
-  if (!props.data) {
-    return <div>Loading...</div>; // Eğer props.data henüz gelmediyse "Loading..." mesajı göster
-  }
-
-  if (weather === null) {
-    return <div>Loading...</div>;
+  if (!props.data || weather === null) {
+    return <div>Loading...</div>; // Display "Loading..." message if data is not yet available
   } else {
+    // Capitalize the first letter of the weather description
     const description =
       weather.weather[0].description[0].toUpperCase() +
       weather.weather[0].description.slice(1);
 
+    // Calculate temperature, feels like temperature, humidity, wind speed, and wind direction
     const feelsLike = Math.floor(weather.main.feels_like - 273.15);
     const temp = Math.floor(weather.main.temp - 273.15);
     const humidity = weather.main.humidity;
-
     const windDegree = weather.wind.deg;
     const windSpeed = Math.floor(weather.wind.speed * 3.6);
     const windDirection = degToCompass(windDegree);
 
+    // Convert UNIX timestamp to human-readable date
     const dateDataTaken = weather.dt;
     const date = new Date(dateDataTaken * 1000).toUTCString();
 
@@ -89,8 +99,8 @@ function CurrentWeather(props) {
         className="box"
         style={{
           backgroundImage: `url(${iconUrl})`,
-          backgroundPosition:"center",
-          backgroundSize:"100% 100%",
+          backgroundPosition: "center",
+          backgroundSize: "100% 100%",
         }}
       >
         <div className="content">

@@ -1,6 +1,12 @@
 import React from "react";
 import SearchIcon from "@mui/icons-material/Search";
 
+/**
+ * Header component renders the header section of the weather app.
+ * @param {Object} props - Component props.
+ * @param {Function} props.cityName - Function to handle city name input.
+ * @returns {JSX.Element} Header component.
+ */
 function Header(props) {
   return (
     <div className="heading">

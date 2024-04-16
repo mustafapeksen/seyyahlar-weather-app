@@ -1,24 +1,26 @@
 import React, { useEffect, useState } from "react";
-import Header from "./Header";
-import Footer from "./Footer";
-import axios from "axios";
-import CurrentWeather from "./CurrentWeather";
-import ForecastWeather from "./ForecastWeather";
+import Header from "./Header"; // Importing the Header component
+import Footer from "./Footer"; // Importing the Footer component
+import axios from "axios"; // Importing axios for making HTTP requests
+import CurrentWeather from "./CurrentWeather"; // Importing the CurrentWeather component
+import ForecastWeather from "./ForecastWeather"; // Importing the ForecastWeather component
 
-const apiKey = "26ce2cf4d5242da8d86c6d1dda8008d9";
+const apiKey = "26ce2cf4d5242da8d86c6d1dda8008d9"; // API key for accessing OpenWeatherMap API
 
 function App() {
-  const [cityName, setCityName] = useState("Anamur");
-  const [geoData, setGeoData] = useState({});
-  const [forecasts, setForecasts] = useState([]);
-  const [iconUrls, setIconUrls] = useState([]);
+  const [cityName, setCityName] = useState("Anamur"); // State to store the name of the city
+  const [geoData, setGeoData] = useState({}); // State to store the geographical data of the selected city
+  const [forecasts, setForecasts] = useState([]); // State to store the weather forecasts
+  const [iconUrls, setIconUrls] = useState([]); // State to store the URLs of weather icons
 
+  // Function to handle city input change
   function cityHandle(event) {
     setCityName(event.target[0].value);
     event.target.city.value = "";
     event.preventDefault();
   }
 
+  // Effect to fetch geographical data when city name changes
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -34,6 +36,7 @@ function App() {
     fetchData();
   }, [cityName]);
 
+  // Effect to fetch weather forecasts when geographical data changes
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -54,6 +57,7 @@ function App() {
     }
   }, [geoData]);
 
+  // Effect to generate URLs for weather icons when forecasts change
   useEffect(() => {
     if (forecasts) {
       const urls = forecasts.map((forecast) => {
@@ -64,6 +68,7 @@ function App() {
     }
   }, [forecasts]);
 
+  // Function to capitalize the first letter of a string
   function toCapitalize(text) {
     const description = text[0].toUpperCase() + text.slice(1);
     return description;
@@ -71,8 +76,8 @@ function App() {
 
   return (
     <div className="container">
-      <Header cityName={cityHandle} />
-      <CurrentWeather api={apiKey} data={geoData[0]} />
+      <Header cityName={cityHandle} /> {/* Header component for displaying city input */}
+      <CurrentWeather api={apiKey} data={geoData[0]} /> {/* CurrentWeather component */}
       <div className="band">
         <div className="wrapper">
           {forecasts.map((forecast, index) => (
@@ -95,7 +100,7 @@ function App() {
           ))}
         </div>
       </div>
-      <Footer />
+      <Footer /> {/* Footer component */}
     </div>
   );
 }
