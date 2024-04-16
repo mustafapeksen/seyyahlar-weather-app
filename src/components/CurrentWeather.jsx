@@ -46,7 +46,6 @@ function CurrentWeather(props) {
           );
           const result = response.data;
           setWeather(result);
-          console.log(result);
         } catch (error) {
           console.error(error);
         }
@@ -99,7 +98,7 @@ function CurrentWeather(props) {
           {iconUrl && <img id="weather-img" src={iconUrl} alt="icon" />}
           <h3 id="temp">{temp}°C</h3>
           <p id="desc">{description}</p>
-          <p id="feels-like"> Hissedilen {feelsLike} °C</p>
+          <p id="feels-like"> Hissedilen {feelsLike}°C</p>
           <p id="humidity">Nem: {humidity}%</p>
           <p id="wind">
             Rüzgar {windDirection} ({windDegree}°) yönünde {windSpeed} km/h

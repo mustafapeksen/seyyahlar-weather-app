@@ -43,7 +43,6 @@ function App() {
           );
           const result = response.data;
           setForecasts(result.list);
-          console.log(result.list);
         }
       } catch (error) {
         console.error(error);
@@ -65,20 +64,36 @@ function App() {
     }
   }, [forecasts]);
 
+  function toCapitalize(text) {
+    const description = text[0].toUpperCase() + text.slice(1);
+    return description;
+  }
+
   return (
     <div className="container">
       <Header cityName={cityHandle} />
       <CurrentWeather api={apiKey} data={geoData[0]} />
       <div className="band">
-        {forecasts.map((forecast, index) => (
-          <ForecastWeather
-            key={index}
-            description={forecast.weather[0].description}
-            temp={forecast.main.temp}
-            date={forecast.dt_txt}
-            icon={iconUrls[index]}
-          />
-        ))}
+        <div className="wrapper">
+          {forecasts.map((forecast, index) => (
+            <ForecastWeather
+              key={index}
+              description={toCapitalize(forecast.weather[0].description)}
+              temp={forecast.main.temp}
+              date={forecast.dt_txt}
+              icon={iconUrls[index]}
+            />
+          ))}
+          {forecasts.map((forecast, index) => (
+            <ForecastWeather
+              key={index}
+              description={toCapitalize(forecast.weather[0].description)}
+              temp={forecast.main.temp}
+              date={forecast.dt_txt}
+              icon={iconUrls[index]}
+            />
+          ))}
+        </div>
       </div>
       <Footer />
     </div>
