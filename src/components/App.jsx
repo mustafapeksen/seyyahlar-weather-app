@@ -25,7 +25,7 @@ function App() {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=5&appid=${apiKey}`
+          `https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=5&appid=${apiKey}`
         );
         const result = response.data;
         setGeoData(result);
