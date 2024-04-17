@@ -8,7 +8,7 @@ import ForecastWeather from "./ForecastWeather"; // Importing the ForecastWeathe
 const apiKey = "/"; // API key for accessing OpenWeatherMap API
 
 function App() {
-  const [cityName, setCityName] = useState("Anamur"); // State to store the name of the city
+  const [cityName, setCityName] = useState("Ankara"); // State to store the name of the city
   const [geoData, setGeoData] = useState({}); // State to store the geographical data of the selected city
   const [forecasts, setForecasts] = useState([]); // State to store the weather forecasts
   const [iconUrls, setIconUrls] = useState([]); // State to store the URLs of weather icons
